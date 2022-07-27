@@ -17,7 +17,7 @@ namespace HangManNew
         }
         static string PickRandomWord(string[] words)
         {
-            int number = Generatenumber(0, words.Length - 1);
+            int number = Generatenumber(0, 11);
             return words[number];
 
         }
@@ -49,7 +49,7 @@ namespace HangManNew
             Console.WriteLine();
         }
 
-        static bool ValidateCharLenght(string userChar)
+        static bool ValidateCharLentgh(string userChar)
         {
             char[] realChar = userChar.ToCharArray();
             if (realChar.Length != 1)
@@ -145,7 +145,7 @@ namespace HangManNew
                 string userLetter = Console.ReadLine();
                 //Console.WriteLine(userLetter);
 
-                if (ValidateCharLenght(userLetter))
+                if (ValidateCharLentgh(userLetter))
                 {
                     char userChar = userLetter.ToCharArray()[0];
 
