@@ -7,3 +7,5 @@ I've build it to learn how to code
 
 Thank you Florian Rakete to bring me near this project in order to learn
 > "In order to learn a new skill, you just have to go for it"
+
+This program was built using [Visual Studio 2022](https://visualstudio.microsoft.com/)).
