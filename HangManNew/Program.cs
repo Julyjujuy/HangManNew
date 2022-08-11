@@ -17,11 +17,10 @@ namespace HangManNew
         }
         static string PickRandomWord(string[] words)
         {
-            int number = Generatenumber(0, 11);
+            int number = Generatenumber(0, words.Length - 1);
             return words[number];
 
         }
-
         static bool CheckInCharArray(char singleChar, char[] listOfChars)
         {
             foreach (char c in listOfChars)
@@ -31,7 +30,6 @@ namespace HangManNew
             }
             return false;
         }
-
         static void DisplayWord(string word, char[] chars)
         {
             //Console.WriteLine(word);
@@ -48,8 +46,7 @@ namespace HangManNew
             }
             Console.WriteLine();
         }
-
-        static bool ValidateCharLentgh(string userChar)
+        static bool ValidateCharLenght(string userChar)
         {
             char[] realChar = userChar.ToCharArray();
             if (realChar.Length != 1)
@@ -58,7 +55,6 @@ namespace HangManNew
             }
             return true;
         }
-
         static bool CheckCharInWord(char userChar, string word)
         {
             foreach (char letter in word)
@@ -70,8 +66,6 @@ namespace HangManNew
             }
             return false;
         }
-
-
         static string GallowView(int livesLeft)
         {
             //simple function to print out the hangman
@@ -82,31 +76,24 @@ namespace HangManNew
             {
                 drawHangman += "--------\n";
             }
-
             if (livesLeft < 4)
             {
                 drawHangman += "       |\n";
             }
-
             if (livesLeft < 3)
             {
                 drawHangman += "       O\n";
             }
-
             if (livesLeft < 2)
             {
                 drawHangman += "      /|\\ \n";
             }
-
             if (livesLeft == 0)
             {
                 drawHangman += "      / \\ \n";
                 drawHangman += "      You Lost!\n";
-
             }
-
             return drawHangman;
-
         }
         static bool CheckTheWin(string wordToCheck, char[] guessesToCheck)
         {
@@ -116,28 +103,17 @@ namespace HangManNew
                 {
                     return false;
                 }
-
-
-
             }
             return true;
         }
-
-
         static void Main(string[] args)
         {
-
             char[] guesses = new char[100];
-
             Console.WriteLine("Welcome to the Hangman Game. You will have 5 tries to guess my random word. I am benevolent enough to show you how many characters there are. ");
-
-
-
             string[] wordsToGuess = { "eagle", "sun", "history", "tail", "third", "mute", "judge", "exultant", "cars", "bounce", "need" };
             string word = PickRandomWord(wordsToGuess);
             DisplayWord(word, guesses);
             int guessCounter = 0;
-
             int life = 5;
             while (life > 0)
             {
@@ -145,7 +121,7 @@ namespace HangManNew
                 string userLetter = Console.ReadLine();
                 //Console.WriteLine(userLetter);
 
-                if (ValidateCharLentgh(userLetter))
+                if (ValidateCharLenght(userLetter))
                 {
                     char userChar = userLetter.ToCharArray()[0];
 
@@ -157,20 +133,15 @@ namespace HangManNew
                             guesses[guessCounter] = userChar;
                             //Console.WriteLine(string.Join(", ", guesses));
                             guessCounter++;
-
-
-
                         }
                         else
                         {
                             life--;
                         }
-
                     }
                     else
                     {
                         Console.WriteLine("Sorry but I only process letters of the alphabet!");
-
                     }
                 }
                 else
@@ -178,26 +149,15 @@ namespace HangManNew
                     Console.WriteLine("Sorry but I only process single letters");
 
                 }
-
                 DisplayWord(word, guesses);
                 Console.WriteLine(GallowView(life));
                 if (CheckTheWin(word, guesses))
-                    {
+                {
                     life = 0;
                     Console.WriteLine("You Won!");
                 }
-
-
-
             }
-
-
-
-
-
             Console.ReadLine();
-
         }
-
     }
 }
